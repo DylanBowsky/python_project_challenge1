@@ -1,5 +1,5 @@
 # coding: utf-8
-# from Python_Project.Hello_Python import average_number
+from Python_Project.Hello_Python import average_number
 import csv
 from pathlib import Path
 
@@ -33,12 +33,6 @@ print(total_value_of_loans)
 # YOUR CODE HERE!
 average = total_value_of_loans/ number_of_loans
 print(average)
-
-
-def average_number(loans):
-    return sum(loans)/ len(loans)
-
-average = average_number(loan_costs)
 """Part 2: Analyze Loan Data.
 
 Analyze the loan to determine the investment evaluation.
@@ -128,8 +122,8 @@ monthly_disocunt_rate = annual_discount_rate/12
 #    The function should return the `present_value` for the loan.
 # YOUR CODE HERE!
 def pv(future_value, remaining_months, annual_discount_rate):
-    return future_value/(1+annual_discount_rate/12)**remaining_months
-
+    present_value= future_value/(1+annual_discount_rate/12)**remaining_months
+    return present_value
 present_value = pv(new_future_value, new_remaining_months, monthly_disocunt_rate)
 
 
