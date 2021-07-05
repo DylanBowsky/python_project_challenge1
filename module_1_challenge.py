@@ -63,6 +63,7 @@ Using more detailed data on one of these loans, follow these steps to calculate 
 """
 
 # Given the following loan data, you will need to calculate the present value for the loan
+#loan list showing all data to get the PV
 loan = {
     "loan_price": 500,
     "remaining_months": 9,
@@ -72,7 +73,7 @@ loan = {
 
 # @TODO: Use get() on the dictionary of additional information to extract the Future Value and Remaining Months on the loan.
 # Print each variable.
-# YOUR CODE HERE!
+# Pulling from list in order to get function values
 loan_price = loan.get("loan_price")
 remaining_months= loan.get("remaining_months")
 print(remaining_months)
@@ -85,13 +86,14 @@ print(future_value)
 #   HINT: Present Value = Future Value / (1 + Discount_Rate/12) ** remaining_months
 
 # YOUR CODE HERE!
+#discount rate must be divided by 12 since its annual currently
 discount_rate =.20 
 fair_value = future_value/ (1+discount_rate/12)**remaining_months
 # If Present Value represents what the loan is really worth, does it make sense to buy the loan at its cost?
 # @TODO: Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
 #    If the present value of the loan is greater than or equal to the cost, then print a message that says the loan is worth at least the cost to buy it.
 #    Else, the present value of the loan is less than the loan cost, then print a message that says that the loan is too expensive and not worth the price.
-# YOUR CODE HERE!
+# conditional statement
 if fair_value >= loan_price:
     print("The loan is worth at least the cost to buy it")
 else:
@@ -126,7 +128,7 @@ monthly_disocunt_rate = annual_discount_rate/12
 # @TODO: Define a new function that will be used to calculate present value.
 #    This function should include parameters for `future_value`, `remaining_months`, and the `annual_discount_rate`
 #    The function should return the `present_value` for the loan.
-# YOUR CODE HERE!
+# Creating pv function and setting the correct parameters this then should return the present value of the loan
 def pv(future_value, remaining_months, annual_discount_rate):
     return future_value/(1+annual_discount_rate/12)**remaining_months
 
@@ -181,7 +183,7 @@ loans = [
 # YOUR CODE HERE!
 inexpensive_loans = []
 # @TODO: Loop through all the loans and append any that cost $500 or less to the `inexpensive_loans` list
-# YOUR CODE HERE!
+# creating a loop with a conditional to add inexpensive loans to the empty list above
 for x in loans:
     if x["loan_price"] <= 500:
        inexpensive_loans.append(x)
@@ -213,7 +215,7 @@ output_path = Path("inexpensive_loans.csv")
 
 # @TODO: Use the csv library and `csv.writer` to write the header row
 # and each row of `loan.values()` from the `inexpensive_loans` list.
-# YOUR CODE HERE!
+# opening the CSV file with the header
 with open(output_path, "w") as csvfile:
 
     csvwriter = csv.writer(csvfile)
